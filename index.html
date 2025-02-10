@@ -155,7 +155,7 @@
     <div class="music-control">
         <button class="music-btn" onclick="toggleMusic()">🎵</button>
         <audio id="bgMusic" loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            <source src="https://erencanylmz58.github.io/kendim/biliyorsun.mp3" type="audio/mpeg">
 
         </audio>
     </div>
@@ -170,7 +170,7 @@
     <div class="container">
         <!-- Eerste bericht -->
         <div id="first-message" class="message">
-            Aşkım sana diyeceğim birşey var...
+            Aşkım sana söyleyeceğim birşey var...
         </div>
         
         <!-- Eerste knop -->
@@ -178,16 +178,25 @@
             Devam et ❤️
         </button>
 
-        <!-- Sorry bericht -->
-        <div id="sorry-message" class="hidden">
-            <div class="message">
-                Seni çok seviyorum...<br>
-                Hata yaptığımı biliyorum...<br>
-                Sen benim için çok özelsin...<br>
-                Sensiz yapamam...
-            </div>
-            <button class="btn" onclick="showQuestion()">Devam et ❤️</button>
-        </div>
+     <!-- Sorry bericht -->
+<div id="sorry-message" class="hidden">
+    <div class="message">
+        Sana tüm kalbimle bir şey söylemek istiyorum…<br><br>
+
+        Ne kadar geç fark ettiysem de, yaptığım hatanın büyüklüğünü şimdi iliklerime kadar hissediyorum. 
+        Seni üzdüğümü, canını yaktığımı biliyorum ve bu düşünce beni içten içe eritiyor. 
+        Keşke zamanı geri alabilsem, keşke o an yaptıklarımı durdurabilsem... 
+        Ama biliyorum, geçmişi değiştiremem. Yapabileceğim tek şey, sana ne kadar değer verdiğimi, 
+        seni ne kadar sevdiğimi ve bu hatayı bir daha asla tekrarlamayacağımı göstermek.<br><br>
+
+        Sen benim için sadece sevdiğim insan değil, aynı zamanda hayatımın en kıymetli parçasısın. 
+        Sensiz bir gün bile eksik, bir an bile solgun. 
+        Lütfen bana, sevgimize bir şans daha ver. 
+        Seni her şeyden çok seviyorum ve bunu sonsuza kadar hissettirmek istiyorum… 💙
+    </div>
+    <button class="btn" onclick="showQuestion()">Devam et ❤️</button>
+</div>
+
 
         <!-- Vraag met knoppen -->
         <div id="question-container" class="hidden">
@@ -197,12 +206,17 @@
         </div>
 
         <!-- Laatste bericht -->
-        <div id="final-message" class="hidden message">
-            Teşekkür ederim aşkım! ❤️<br>
-            Sen benim her şeyimsin...<br>
-            Seni çok seviyorum!
-        </div>
-    </div>
+<div id="final-message" class="hidden message">
+   
+    İçimdeki ağırlığı hafifleten, kalbime nefes aldıran tek şey senin affın. <br>
+    Sana ne kadar teşekkür etsem, sevgimi nasıl anlatsam az. <br>
+    Bir daha asla seni üzmemek için elimden gelen her şeyi yapacağım. <br><br>
+
+    Sen benim için sadece bir sevgili değil, en büyük şansım ve en kıymetlimsin. <br>
+    İyi ki varsın, iyi ki beni affettin… <br>
+    Seni her şeyden çok seviyorum. 💙
+</div>
+
 
     <script>
 function startExperience() {
@@ -269,9 +283,19 @@ function startExperience() {
         }
 
         function accepted() {
-            document.getElementById('question-container').style.display = 'none';
-            document.getElementById('final-message').style.display = 'block';
-        }
+    // Verberg ALLE andere secties
+    document.getElementById('question-container').style.display = 'none';
+    document.getElementById('first-message').style.display = 'none';
+    document.getElementById('sorry-message').style.display = 'none';
+
+    // Zorg ervoor dat het laatste bericht goed wordt weergegeven
+    const finalMessage = document.getElementById('final-message');
+    finalMessage.style.display = 'block';
+    finalMessage.style.opacity = '1';
+}
+
+
+
 
         // Start achtergrond hartjes bij laden
         createBackgroundHearts();
