@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ff6b6b;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart-bg {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.2;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: appear 1s forwards;
+            z-index: 1;
+            position: relative;
+        }
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 1rem;
+            box-shadow: 0 5px 15px rgba(255,71,87,0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 25px rgba(255,71,87,0.6);
+        }
+
+        .btn.no {
+            background: #808080;
+            position: relative;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #sorry-message, #question-container {
+            opacity: 0;
+            display: none;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        #noBtn {
+            position: absolute;
+            transition: all 0.2s;
+        }
+
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .music-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .welcome-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #ff6b6b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 10;
+}
+
+.welcome-container button {
+    background: white;
+    color: #ff4757;
+    font-size: 1.2rem;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.welcome-container button:hover {
+    transform: scale(1.1);
+}
+    </style>
+</head>
+<body>
+    <div class="background-hearts" id="bgHearts"></div>
+    
+    <div class="music-control">
+        <button class="music-btn" onclick="toggleMusic()">🎵</button>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+
+        </audio>
+    </div>
+
+<!-- Welkom scherm -->
+<div id="welcome-screen" class="welcome-container">
+    <h2>❤️ Aşkım, klik hieronder ❤️</h2>
+    <button class="btn" onclick="startExperience()">Başlat 🎵</button>
+</div>
+
+
+    <div class="container">
+        <!-- Eerste bericht -->
+        <div id="first-message" class="message">
+            Aşkım sana diyeceğim birşey var...
+        </div>
+        
+        <!-- Eerste knop -->
+        <button id="continue-btn" class="btn" onclick="showSorryMessage()">
+            Devam et ❤️
+        </button>
+
+        <!-- Sorry bericht -->
+        <div id="sorry-message" class="hidden">
+            <div class="message">
+                Seni çok seviyorum...<br>
+                Hata yaptığımı biliyorum...<br>
+                Sen benim için çok özelsin...<br>
+                Sensiz yapamam...
+            </div>
+            <button class="btn" onclick="showQuestion()">Devam et ❤️</button>
+        </div>
+
+        <!-- Vraag met knoppen -->
+        <div id="question-container" class="hidden">
+            <h2>Beni affeder misin?</h2>
+            <button class="btn" onclick="accepted()">Evet</button>
+            <button class="btn no" id="noBtn">Hayır</button>
+        </div>
+
+        <!-- Laatste bericht -->
+        <div id="final-message" class="hidden message">
+            Teşekkür ederim aşkım! ❤️<br>
+            Sen benim her şeyimsin...<br>
+            Seni çok seviyorum!
+        </div>
+    </div>
+
+    <script>
+function startExperience() {
+    const audio = document.getElementById('bgMusic');
+
+    // Probeer de muziek af te spelen na een echte klik
+    audio.play().then(() => {
+        document.getElementById('welcome-screen').style.display = 'none'; // Verwijder welkomsscherm
+    }).catch(e => {
+        alert("Je moet de audio zelf starten vanwege browserbeperkingen. Druk op de 🎵 knop rechtsboven.");
+    });
+}
+
+
+
+        // Achtergrond hartjes maken
+        function createBackgroundHearts() {
+            const container = document.getElementById('bgHearts');
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'heart-bg';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                container.appendChild(heart);
+            }
+        }
+
+        // Muziek controls
+        let isPlaying = false;
+        function toggleMusic() {
+            const audio = document.getElementById('bgMusic');
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+            } else {
+                audio.play().catch(e => console.log('Autoplay prevented'));
+                isPlaying = true;
+            }
+        }
+
+        function showSorryMessage() {
+            document.getElementById('continue-btn').style.display = 'none';
+            document.getElementById('sorry-message').style.display = 'block';
+        }
+
+        function showQuestion() {
+            document.getElementById('sorry-message').style.display = 'none';
+            document.getElementById('question-container').style.display = 'block';
+            setupNoButton();
+        }
+
+        function setupNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            noBtn.addEventListener('mouseover', function() {
+                const container = document.querySelector('.container');
+                const rect = container.getBoundingClientRect();
+                const x = Math.random() * (rect.width - 100);
+                const y = Math.random() * (rect.height - 40);
+                this.style.position = 'absolute';
+                this.style.left = x + 'px';
+                this.style.top = y + 'px';
+            });
+        }
+
+        function accepted() {
+            document.getElementById('question-container').style.display = 'none';
+            document.getElementById('final-message').style.display = 'block';
+        }
+
+        // Start achtergrond hartjes bij laden
+        createBackgroundHearts();
+    </script>
+</body>
+</html>
