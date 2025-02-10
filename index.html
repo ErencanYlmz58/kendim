@@ -4,124 +4,134 @@
     <title>❤️</title>
     <style>
         body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #ff6b6b;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-            position: relative;
-        }
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    font-family: 'Great Vibes', cursive;
+    overflow: hidden;
+    position: relative;
+}
 
-        .background-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
+.background-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
 
-        .heart-bg {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.2;
-            color: #fff;
-        }
+.heart-bg {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.2;
+    color: #fff;
+    animation: float 10s infinite ease-in-out;
+}
 
-        .container {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
-            opacity: 0;
-            transform: scale(0.5);
-            animation: appear 1s forwards;
-            z-index: 1;
-            position: relative;
-        }
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
 
-        @keyframes appear {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+.container {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: appear 1s forwards;
+    z-index: 1;
+    position: relative;
+}
 
-        .message {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            margin: 2rem 0;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
+@keyframes appear {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-        .btn {
-            background: #ff4757;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 1rem;
-            box-shadow: 0 5px 15px rgba(255,71,87,0.4);
-        }
+.message {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
 
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 25px rgba(255,71,87,0.6);
-        }
+.btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 1rem;
+    box-shadow: 0 5px 15px rgba(255,71,87,0.4);
+}
 
-        .btn.no {
-            background: #808080;
-            position: relative;
-        }
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 25px rgba(255,71,87,0.6);
+}
 
-        .hidden {
-            display: none;
-        }
+.btn.no {
+    background: #808080;
+    position: relative;
+}
 
-        #sorry-message, #question-container {
-            opacity: 0;
-            display: none;
-            animation: fadeIn 1s forwards;
-        }
+.hidden {
+    display: none;
+}
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+#sorry-message, #question-container {
+    opacity: 0;
+    display: none;
+    animation: fadeIn 1s forwards;
+}
 
-        #noBtn {
-            position: absolute;
-            transition: all 0.2s;
-        }
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
 
-        .music-control {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2;
-        }
+#noBtn {
+    position: absolute;
+    transition: all 0.2s;
+}
 
-        .music-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
 
-        .welcome-container {
+.music-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.welcome-container {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #ff6b6b;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -149,6 +159,9 @@
 }
     </style>
 </head>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
 <body>
     <div class="background-hearts" id="bgHearts"></div>
     
@@ -162,7 +175,7 @@
 
 <!-- Welkom scherm -->
 <div id="welcome-screen" class="welcome-container">
-    <h2>❤️ Aşkım, klik hieronder ❤️</h2>
+    <h2>❤️ Aşkım tıklarımsın.. ❤️</h2>
     <button class="btn" onclick="startExperience()">Başlat 🎵</button>
 </div>
 
@@ -234,16 +247,17 @@ function startExperience() {
 
         // Achtergrond hartjes maken
         function createBackgroundHearts() {
-            const container = document.getElementById('bgHearts');
-            for (let i = 0; i < 50; i++) {
-                const heart = document.createElement('div');
-                heart.innerHTML = '❤️';
-                heart.className = 'heart-bg';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.top = Math.random() * 100 + 'vh';
-                container.appendChild(heart);
-            }
-        }
+    const container = document.getElementById('bgHearts');
+    for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.className = 'heart-bg';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = Math.random() * 5 + 5 + 's'; // Variabele snelheid
+        container.appendChild(heart);
+    }
+}
 
         // Muziek controls
         let isPlaying = false;
@@ -270,17 +284,27 @@ function startExperience() {
         }
 
         function setupNoButton() {
-            const noBtn = document.getElementById('noBtn');
-            noBtn.addEventListener('mouseover', function() {
-                const container = document.querySelector('.container');
-                const rect = container.getBoundingClientRect();
-                const x = Math.random() * (rect.width - 100);
-                const y = Math.random() * (rect.height - 40);
-                this.style.position = 'absolute';
-                this.style.left = x + 'px';
-                this.style.top = y + 'px';
-            });
-        }
+    const noBtn = document.getElementById('noBtn');
+    const container = document.querySelector('.container');
+    const rect = container.getBoundingClientRect();
+
+    noBtn.addEventListener('mouseover', function() {
+        const x = Math.random() * (rect.width - noBtn.offsetWidth);
+        const y = Math.random() * (rect.height - noBtn.offsetHeight);
+        this.style.position = 'absolute';
+        this.style.left = x + 'px';
+        this.style.top = y + 'px';
+    });
+
+    // Voeg een interval toe om de knop continu te laten bewegen
+    setInterval(() => {
+        const x = Math.random() * (rect.width - noBtn.offsetWidth);
+        const y = Math.random() * (rect.height - noBtn.offsetHeight);
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    }, 1000); // Verplaats de knop elke 1000 milliseconden (1 seconde)
+}
 
         function accepted() {
     // Verberg ALLE andere secties
